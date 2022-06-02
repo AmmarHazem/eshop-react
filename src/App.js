@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link, Routes, Route } from "react-router-dom";
+import ProductsList from "./Routes/ProductsList";
+import OrdersList from "./Routes/OrdersList";
+import PendingOrdersList from "./components/PendingOrdersList";
+import PreviousOrdersList from "./components/PreviousOrdersList";
+import OrderDetails from "./Routes/OrderDetails";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        {/* <Link to="/profile">Profile</Link> */}
+        <Link to="/">Home</Link> | <Link to="/orders">Orders</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<ProductsList />} />
+        <Route path="orders" element={<OrdersList />}>
+          <Route index element={<main>Select Invoice</main>} />
+          <Route path="" element={<PendingOrdersList />}>
+            <Route path=":orderID" element={<OrderDetails />} />
+          </Route>
+          <Route path="previous" element={<PreviousOrdersList />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main>
+              <p>Route not found</p>
+              <Link to="/">Back Home</Link>
+            </main>
+          }
+        />
+      </Routes>
     </div>
   );
 }
