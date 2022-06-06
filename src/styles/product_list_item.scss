@@ -1,0 +1,35 @@
+.product-list-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+
+  .header {
+    height: 21rem;
+    width: 100%;
+
+    .image {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: auto;
+    }
+  }
+
+  .body {
+    padding: 0.5rem 0.5rem;
+
+    .title,
+    .price {
+      margin: 0px;
+    }
+
+    .title {
+      font-size: 1.3rem;
+    }
+
+    .rating-bar {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
