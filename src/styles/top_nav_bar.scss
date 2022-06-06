@@ -1,0 +1,87 @@
+@import "./variables.scss";
+
+.top-nav-bar {
+  padding: 0.5rem 0px;
+  background-color: $mainColor;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transition: height 1s ease-out;
+
+  .top-nav-logo-col {
+    position: relative;
+
+    .logo {
+      margin: 0px;
+      text-align: center;
+      font-family: "Lobster", cursive;
+      color: white;
+    }
+
+    .mobile-menu-btn {
+      position: absolute;
+      right: 24px;
+      top: 0px;
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
+  }
+
+  .search-input-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search-input {
+      width: 100%;
+      .ant-input {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      .ant-btn {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+
+  .nav-links-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .top-bar-nav-link {
+      width: 6rem;
+      color: white;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+
+      &:hover,
+      &.active {
+        border: 1px solid white;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .top-nav-bar {
+    height: 55px;
+    overflow: hidden;
+
+    &.expanded {
+      height: auto;
+    }
+
+    .nav-links-col {
+      justify-content: center;
+    }
+  }
+}

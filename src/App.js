@@ -1,35 +1,22 @@
-import { Link, Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import TopNavBar from "./components/TopNavBar";
+import Cart from "./Routes/Cart";
+import MyOrders from "./Routes/MyOrders";
 import ProductsList from "./Routes/ProductsList";
-import OrdersList from "./Routes/OrdersList";
-import PendingOrdersList from "./components/PendingOrdersList";
-import PreviousOrdersList from "./components/PreviousOrdersList";
-import OrderDetails from "./Routes/OrderDetails";
+import RouteNotFound from "./Routes/RouteNotFound";
+import Profile from "./Routes/Profile";
 
 function App() {
   return (
     <div className="App">
-      <nav>
-        {/* <Link to="/profile">Profile</Link> */}
-        <Link to="/">Home</Link> | <Link to="/orders">Orders</Link>
-      </nav>
+      <TopNavBar />
       <Routes>
         <Route path="/" element={<ProductsList />} />
-        <Route path="orders" element={<OrdersList />}>
-          <Route index element={<main>Select Invoice</main>} />
-          <Route path="" element={<PendingOrdersList />}>
-            <Route path=":orderID" element={<OrderDetails />} />
-          </Route>
-          <Route path="previous" element={<PreviousOrdersList />} />
-        </Route>
-        <Route
-          path="*"
-          element={
-            <main>
-              <p>Route not found</p>
-              <Link to="/">Back Home</Link>
-            </main>
-          }
-        />
+        <Route path="cart" element={<Cart />} />
+        <Route path="my-orders" element={<MyOrders />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="*" element={<RouteNotFound />} />
       </Routes>
     </div>
   );
