@@ -7,7 +7,7 @@ import useGetProducts from "../customHooks/useGetProducts";
 const ProductsList = () => {
   const [loadingProducts, products] = useGetProducts({});
 
-  console.log("--- loadingProducts", loadingProducts, products);
+  // console.log("--- loadingProducts", loadingProducts, products);
 
   let content;
   if (loadingProducts) {
@@ -16,6 +16,8 @@ const ProductsList = () => {
         <Loading />
       </div>
     );
+  } else if (!products) {
+    content = <h4>Something went wrong</h4>;
   } else if (products.length === 0) {
     content = <div>No Products Found</div>;
   } else {
